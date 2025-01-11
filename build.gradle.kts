@@ -11,7 +11,7 @@ repositories {
 
 dependencies {
     implementation("org.slf4j:slf4j-api:2.0.9")
-    implementation("ch.qos.logback:logback-classic:1.4.11")
+    implementation("ch.qos.logback:logback-classic:1.5.16")
     testImplementation(kotlin("test"))
     testImplementation("org.assertj:assertj-core:3.24.2")
 }
