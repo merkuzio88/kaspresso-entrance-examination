@@ -32,11 +32,11 @@ class CerealStorageImplTest {
     @Test
     fun `should add cereal and return excess`() {
         assertThat(storage.addCereal(BUCKWHEAT, 15f))
-            .describedAs("Expected excess of 5f but was %s", storage.addCereal(BUCKWHEAT, 15f))
+            .describedAs("Ожидался излишек 5f, но получено %s", storage.addCereal(BUCKWHEAT, 15f))
             .isEqualTo(5f)
 
         assertThat(storage.getAmount(BUCKWHEAT))
-            .describedAs("Expected 10f of buckwheat but was %s", storage.getAmount(BUCKWHEAT))
+            .describedAs("Ожидалось 10f гречки, но получено %s", storage.getAmount(BUCKWHEAT))
             .isEqualTo(10f)
     }
 
@@ -63,12 +63,12 @@ class CerealStorageImplTest {
         val retrievedAmount = storage.getCereal(RICE, 5f)
 
         assertThat(retrievedAmount)
-            .describedAs("Expected to retrieve 5f of rice but was %s", retrievedAmount)
+            .describedAs("Ожидалось получить 5f риса, но получено %s", retrievedAmount)
             .isEqualTo(5f)
 
         val remainingAmount = storage.getAmount(RICE)
         assertThat(remainingAmount)
-            .describedAs("Expected remaining amount of rice to be 3f but was %s", remainingAmount)
+            .describedAs("Ожидалось остаточное количество риса 3f, но получено %s", remainingAmount)
             .isEqualTo(3f)
     }
 
@@ -82,7 +82,7 @@ class CerealStorageImplTest {
     @Test
     fun `should return zero when getting from empty container`() {
         assertThat(storage.getCereal(MILLET, 5f))
-            .describedAs("Expected to retrieve 0f from empty millet container but was %s",
+            .describedAs("Ожидалось получить 0f из пустого контейнера проса, но получено %s",
                 storage.getCereal(MILLET, 5f))
             .isEqualTo(0f)
     }
@@ -93,7 +93,7 @@ class CerealStorageImplTest {
         storage.getCereal(RICE, 5f)
 
         assertThat(storage.removeContainer(RICE))
-            .describedAs("Expected to successfully remove empty rice container but failed")
+            .describedAs("Ожидалось успешное удаление пустого контейнера риса, но произошла ошибка")
             .isTrue()
     }
 
@@ -102,7 +102,7 @@ class CerealStorageImplTest {
         storage.addCereal(RICE, 5f)
 
         assertThat(storage.removeContainer(RICE))
-            .describedAs("Expected not to remove non-empty rice container but succeeded")
+            .describedAs("Ожидалось, что непустой контейнер риса не будет удален, но он был удален")
             .isFalse()
     }
 
@@ -111,11 +111,11 @@ class CerealStorageImplTest {
         storage.addCereal(BUCKWHEAT, 7f)
 
         assertThat(storage.getAmount(BUCKWHEAT))
-            .describedAs("Expected 7f of buckwheat but was %s", storage.getAmount(BUCKWHEAT))
+            .describedAs("Ожидалось 7f гречки, но получено %s", storage.getAmount(BUCKWHEAT))
             .isEqualTo(7f)
 
         assertThat(storage.getAmount(RICE))
-            .describedAs("Expected 0f of rice but was %s", storage.getAmount(RICE))
+            .describedAs("Ожидалось 0f риса, но получено %s", storage.getAmount(RICE))
             .isEqualTo(0f)
     }
 
@@ -124,16 +124,16 @@ class CerealStorageImplTest {
         storage.addCereal(RICE, 6f)
 
         assertThat(storage.getSpace(RICE))
-            .describedAs("Expected 4f of space for rice but was %s", storage.getSpace(RICE))
+            .describedAs("Ожидалось 4f свободного места для риса, но получено %s", storage.getSpace(RICE))
             .isEqualTo(4f)
 
         assertThat(storage.getSpace(MILLET))
-            .describedAs("Expected 10f of space for millet but was %s", storage.getSpace(MILLET))
+            .describedAs("Ожидалось 10f свободного места для проса, но получено %s", storage.getSpace(MILLET))
             .isEqualTo(10f)
 
         storage.addCereal(BUCKWHEAT, 10f)
         assertThat(storage.getSpace(MILLET))
-            .describedAs("Expected 0f of space for millet but was %s", storage.getSpace(MILLET))
+            .describedAs("Ожидалось 0f свободного места для проса, но получено %s", storage.getSpace(MILLET))
             .isEqualTo(0f)
     }
 
@@ -143,7 +143,7 @@ class CerealStorageImplTest {
         storage.addCereal(BUCKWHEAT, 3f)
 
         assertThat(storage.toString())
-            .describedAs("Expected toString to be 'RICE: 5.0\nBUCKWHEAT: 3.0' but was %s",
+            .describedAs("Ожидалось, что toString вернет 'RICE: 5.0\nBUCKWHEAT: 3.0', но получено %s",
                 storage.toString())
             .isEqualTo("RICE: 5.0\nBUCKWHEAT: 3.0")
     }
